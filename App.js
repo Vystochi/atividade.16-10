@@ -11,7 +11,18 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Lista de Compras" component={HomeScreen} />
+        <Stack.Screen
+          name="Lista de Compras"
+          component={HomeScreen}
+          options={{
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontSize: 24, 
+              fontWeight: 'bold',
+              color: '#333',
+            },
+          }}
+        />
         <Stack.Screen name="Adicionar Produto" component={AddScreen} />
         <Stack.Screen name="Editar Produto" component={EditScreen} />
       </Stack.Navigator>

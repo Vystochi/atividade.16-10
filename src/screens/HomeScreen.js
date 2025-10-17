@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Button, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import ItemCard from '../components/ItemCard';
 
 export default function HomeScreen({ navigation }) {
@@ -28,11 +28,13 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button
-        title="Adicionar Produto"
+      <TouchableOpacity
+        style={styles.botaoAdicionar}
         onPress={() => navigation.navigate('Adicionar Produto')}
-        
-      />
+      >
+        <Text style={styles.textoBotao}>Adicionar Produto</Text>
+      </TouchableOpacity>
+
       <FlatList
         data={produtos}
         keyExtractor={(item) => item.id}
@@ -41,7 +43,6 @@ export default function HomeScreen({ navigation }) {
             item={item}
             onEdit={() => navigation.navigate('Editar Produto', { item })}
             onDelete={() => deletarProduto(item.id)}
-            
           />
         )}
       />
@@ -51,4 +52,16 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  botaoAdicionar: {
+    backgroundColor: '#007bff',
+    borderRadius: 15,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  textoBotao: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
